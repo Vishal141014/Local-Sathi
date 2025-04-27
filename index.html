@@ -4,18 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Sathi - AI-powered Customer Support</title>
+    <meta name="description" content="Local Sathi provides AI-powered chatbot solutions for small businesses in India, offering multilingual support on WhatsApp and Telegram.">
+    <meta name="keywords" content="AI chatbot, customer support, small business, WhatsApp bot, Telegram bot, business automation">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Local Sathi",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "599",
+        "priceCurrency": "INR"
+      },
+      "operatingSystem": "Web",
+      "description": "AI-powered customer support for small businesses in India with multilingual capabilities.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "256"
+      }
+    }
+    </script>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Local<span>Sathi</span></h1>
+                <img src="images/logo.webp" alt="Local Sathi Logo">
             </div>
             <nav>
                 <ul>
@@ -40,6 +63,12 @@
                 <h1>Grow Your Business with Local Sathi</h1>
                 <p>Instant AI-powered Customer Support on WhatsApp and Telegram</p>
                 <button class="cta-btn">Get Started</button>
+                <!-- New feature showcase badges -->
+                <div class="feature-badges">
+                    <span class="badge">Multi-language Support</span>
+                    <span class="badge">Voice Interaction</span>
+                    <span class="badge">Business Customization</span>
+                </div>
             </div>
             <div class="hero-image animate__animated animate__fadeInRight">
                 <img src="https://img.freepik.com/free-vector/chatbot-artificial-intelligence-abstract-concept_335657-3152.jpg" alt="Small Business Owner using Local Sathi">
@@ -71,6 +100,57 @@
                     </div>
                     <h3>Insights & Analytics</h3>
                     <p>Store and analyze customer queries to improve your business and identify opportunities.</p>
+                </div>
+                <!-- New feature cards -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="globe"></i>
+                    </div>
+                    <h3>Multi-language</h3>
+                    <p>Support your customers in English, Hindi, Bengali, Marathi and other regional languages.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="mic"></i>
+                    </div>
+                    <h3>Voice Interactions</h3>
+                    <p>Enable voice-based conversations for more natural and accessible customer interactions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-feather="layout"></i>
+                    </div>
+                    <h3>Custom Branding</h3>
+                    <p>Customize the chatbot interface with your business colors, logo, and terminology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="integrations" class="integrations">
+        <div class="container">
+            <h2 class="animate__animated animate__fadeIn">Seamless Integrations</h2>
+            <p class="section-subtitle">Connect with the platforms your customers already use</p>
+            <div class="integration-icons">
+                <div class="integration-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Integration">
+                    <p>WhatsApp</p>
+                </div>
+                <div class="integration-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Integration">
+                    <p>Telegram</p>
+                </div>
+                <div class="integration-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Google_My_Business_logo.svg" alt="Google Business Integration">
+                    <p>Google Business</p>
+                </div>
+                <div class="integration-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook Integration">
+                    <p>Facebook</p>
+                </div>
+                <div class="integration-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Integration">
+                    <p>Instagram</p>
                 </div>
             </div>
         </div>
@@ -141,6 +221,7 @@
                     <div class="pricing-features">
                         <ul>
                             <li><i data-feather="check"></i> Telegram Integration</li>
+                            <li><i data-feather="check"></i> Single Language Support</li>
                             <li><i data-feather="check"></i> Up to 500 messages/month</li>
                             <li><i data-feather="check"></i> Basic Analytics</li>
                             <li><i data-feather="check"></i> Email Support</li>
@@ -148,25 +229,27 @@
                             <li class="disabled"><i data-feather="x"></i> Human Handoff</li>
                         </ul>
                     </div>
-                    <button class="pricing-btn">Start Free Trial</button>
+                    <a href="form.html?plan=basic&trial=true" class="pricing-btn">Start Free Trial</a>
                 </div>
                 <div class="pricing-card popular animate__animated animate__fadeInUp animate__delay-2s">
                     <div class="popular-badge">Most Popular</div>
                     <div class="pricing-header">
                         <h3>Business</h3>
                         <p class="price">₹999<span>/month</span></p>
+                        <p class="trial-info">Start with a 14-day free trial</p>
                     </div>
                     <div class="pricing-features">
                         <ul>
-                            <li><i data-feather="check"></i> Telegram Integration</li>
-                            <li><i data-feather="check"></i> WhatsApp Integration</li>
-                            <li><i data-feather="check"></i> Up to 2,000 messages/month</li>
-                            <li><i data-feather="check"></i> Advanced Analytics</li>
-                            <li><i data-feather="check"></i> Human Handoff</li>
-                            <li><i data-feather="check"></i> Priority Support</li>
+                            <li><i data-feather="check"></i> Premium customer support</li>
+                            <li><i data-feather="check"></i> Full service access</li>
+                            <li><i data-feather="check"></i> Priority request handling</li>
+                            <li><i data-feather="check"></i> Extended hours assistance</li>
+                            <li><i data-feather="check"></i> Basic member benefits</li>
+                            <li><i data-feather="check"></i> 24/7 local assistance</li>
+                            <li><i data-feather="check"></i> Exclusive member benefits</li>
                         </ul>
                     </div>
-                    <button class="pricing-btn highlight">Start Free Trial</button>
+                    <a href="form.html?plan=standard&trial=true" class="pricing-btn highlight">Start Free Trial</a>
                 </div>
                 <div class="pricing-card animate__animated animate__fadeInUp animate__delay-3s">
                     <div class="pricing-header">
@@ -176,6 +259,7 @@
                     <div class="pricing-features">
                         <ul>
                             <li><i data-feather="check"></i> All Business Features</li>
+                            <li><i data-feather="check"></i> Multi-language Support</li>
                             <li><i data-feather="check"></i> Unlimited Messages</li>
                             <li><i data-feather="check"></i> Multiple Team Members</li>
                             <li><i data-feather="check"></i> Custom Integrations</li>
@@ -183,7 +267,25 @@
                             <li><i data-feather="check"></i> 24/7 Priority Support</li>
                         </ul>
                     </div>
-                    <button class="pricing-btn">Start Free Trial</button>
+                    <a href="form.html?plan=premium&trial=true" class="pricing-btn">Start Free Trial</a>
+                </div>
+                <div class="pricing-card enterprise animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p class="price">₹2599<span>/month</span></p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i data-feather="check"></i> All Premium Features</li>
+                            <li><i data-feather="check"></i> White-label Solution</li>
+                            <li><i data-feather="check"></i> Custom Development</li>
+                            <li><i data-feather="check"></i> On-premise Option</li>
+                            <li><i data-feather="check"></i> SLA Guarantees</li>
+                            <li><i data-feather="check"></i> API Access</li>
+                            <li><i data-feather="check"></i> Enterprise Support</li>
+                        </ul>
+                    </div>
+                    <a href="form.html?plan=enterprise&trial=true" class="pricing-btn">Contact Sales</a>
                 </div>
             </div>
         </div>
@@ -202,6 +304,13 @@
                         <div>
                             <h4>Sarah Johnson</h4>
                             <p>Beauty Salon Owner</p>
+                            <div class="rating">
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -214,6 +323,13 @@
                         <div>
                             <h4>Michael Rodriguez</h4>
                             <p>Local Grocery Store</p>
+                            <div class="rating">
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -226,6 +342,13 @@
                         <div>
                             <h4>Priya Sharma</h4>
                             <p>Education Center Director</p>
+                            <div class="rating">
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                                <i data-feather="star" class="filled"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -288,7 +411,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h3>Smart<span>Assist</span></h3>
+                    <h3>Local<span>Sathi</span></h3>
                     <p>AI-powered customer support for small businesses</p>
                 </div>
                 <div class="footer-links">

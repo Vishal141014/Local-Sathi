@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Sathi - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Admin Dashboard Styles */
+        :root {
+            --primary-color: #5b21b6;
+            --primary-light: #7c3aed;
+            --secondary-color: #10b981;
+            --dark-color: #1f2937;
+            --light-color: #f3f4f6;
+            --gray-color: #6b7280;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --success-color: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafb;
+            color: var(--dark-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        .admin-header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .admin-logo h1 {
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+        }
+
+        .admin-user .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .admin-user .user-info p {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .admin-user .user-info span {
+            font-size: 12px;
+            color: var(--gray-color);
+        }
+
+        /* Dashboard layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: #f3f4f6;
+            color: var(--primary-color);
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main content */
+        .main-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stat-card.customers {
+            border-left-color: var(--primary-color);
+        }
+
+        .stat-card.revenue {
+            border-left-color: var(--success-color);
+        }
+
+        .stat-card.subscriptions {
+            border-left-color: var(--warning-color);
+        }
+
+        .stat-card.pending {
+            border-left-color: var(--danger-color);
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            color: var(--gray-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .stat-info {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .stat-card .stat-info.positive {
+            color: var(--success-color);
+        }
+
+        .stat-card .stat-info.negative {
+            color: var(--danger-color);
+        }
+
+        .stat-card .stat-info i {
+            margin-right: 5px;
+        }
+
+        /* Recent subscriptions */
+        .recent-subscriptions {
+            margin-top: 20px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .table-header h3 {
+            font-size: 18px;
+        }
+
+        .table-header .view-all {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        table th {
+            font-size: 14px;
+            color: var(--gray-color);
+            font-weight: 500;
+            background-color: #f9fafb;
+        }
+
+        table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-verified {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-pending {
+            background-color: #feedb9;
+            color: #92400e;
+        }
+
+        .status-failed {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .action-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Search and filter */
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+        }
+
+        .filter-select {
+            min-width: 150px;
+            padding: 10px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table th:nth-child(3),
+            table td:nth-child(3) {
+                display: none;
+            }
+        }
+
+        /* Add styles for notification and modal */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 4px;
+            background-color: #f3f4f6;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            min-width: 300px;
+        }
+        
+        .notification.success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid #10b981;
+        }
+        
+        .notification.error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            border-left: 4px solid #ef4444;
+        }
+        
+        .notification.info {
+            background-color: #dbeafe;
+            color: #1e40af;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .notification .close-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .customer-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .modal-header h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .details-section {
+            margin-bottom: 20px;
+        }
+        
+        .details-section h4 {
+            font-size: 16px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 5px;
+        }
+        
+        .details-row {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .details-label {
+            width: 150px;
+            font-weight: 500;
+            color: var(--gray-color);
+        }
+        
+        .details-value {
+            flex: 1;
+        }
+        
+        .details-value.status-verified {
+            color: #065f46;
+            font-weight: 500;
+        }
+        
+        .details-value.status-pending {
+            color: #92400e;
+            font-weight: 500;
+        }
+        
+        .details-value.status-failed {
+            color: #b91c1c;
+            font-weight: 500;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+        }
+        
+        .secondary-btn {
+            background-color: #f3f4f6;
+            color: var(--dark-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .verify-btn {
+            color: white;
+            background-color: var(--success-color);
+        }
+        
+        .verify-btn:hover {
+            background-color: #0d9488;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="container">
+            <div class="admin-logo">
+                <img src="images/logo.webp" alt="Local Sathi Logo">
+                <h1>Local Sathi Admin</h1>
+            </div>
+            <div class="admin-user">
+                <div class="user-avatar">A</div>
+                <div class="user-info">
+                    <p>Admin User</p>
+                    <span>Super Admin</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="container">
+        <div class="dashboard">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
+                    <li><a href="#"><i class="fas fa-credit-card"></i> Subscriptions</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="dashboard-header">
+                    <h2>Dashboard Overview</h2>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card customers">
+                        <h3>Total Customers</h3>
+                        <div class="stat-value">124</div>
+                        <div class="stat-info positive">
+                            <i class="fas fa-arrow-up"></i> 12% from last month
+                        </div>
+                    </div>
+                    <div class="stat-card revenue">
+                        <h3>Monthly Revenue</h3>
+                        <div class="stat-value">₹62,400</div>
+                        <div class="stat-info positive">
+                            <i class="fas fa-arrow-up"></i> 8% from last month
+                        </div>
+                    </div>
+                    <div class="stat-card subscriptions">
+                        <h3>Active Subscriptions</h3>
+                        <div class="stat-value">98</div>
+                        <div class="stat-info positive">
+                            <i class="fas fa-arrow-up"></i> 5% from last month
+                        </div>
+                    </div>
+                    <div class="stat-card pending">
+                        <h3>Pending Verifications</h3>
+                        <div class="stat-value">7</div>
+                        <div class="stat-info negative">
+                            <i class="fas fa-arrow-down"></i> 3% from last month
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filters -->
+                <div class="filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search customers...">
+                    </div>
+                    <select class="filter-select">
+                        <option value="all">All Plans</option>
+                        <option value="basic">Basic Plan</option>
+                        <option value="standard">Business Plan</option>
+                        <option value="premium">Premium Plan</option>
+                        <option value="enterprise">Enterprise Plan</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="verified">Verified</option>
+                        <option value="pending">Pending</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
+
+                <!-- Recent Subscriptions -->
+                <div class="recent-subscriptions">
+                    <div class="table-header">
+                        <h3>Recent Subscriptions</h3>
+                        <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Plan</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rahul Sharma</td>
+                                <td>Business Plan</td>
+                                <td>₹999</td>
+                                <td>2023-06-15</td>
+                                <td><span class="status-badge status-verified">Verified</span></td>
+                                <td><button class="action-btn">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td>Priya Patel</td>
+                                <td>Premium Plan</td>
+                                <td>₹1499</td>
+                                <td>2023-06-14</td>
+                                <td><span class="status-badge status-verified">Verified</span></td>
+                                <td><button class="action-btn">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td>Amit Singh</td>
+                                <td>Basic Plan</td>
+                                <td>₹599</td>
+                                <td>2023-06-14</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td><button class="action-btn">Verify Payment</button></td>
+                            </tr>
+                            <tr>
+                                <td>Sneha Gupta</td>
+                                <td>Enterprise Plan</td>
+                                <td>₹2599</td>
+                                <td>2023-06-13</td>
+                                <td><span class="status-badge status-verified">Verified</span></td>
+                                <td><button class="action-btn">View Details</button></td>
+                            </tr>
+                            <tr>
+                                <td>Vikram Verma</td>
+                                <td>Business Plan</td>
+                                <td>₹999</td>
+                                <td>2023-06-12</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td><button class="action-btn">Verify Payment</button></td>
+                            </tr>
+                            <tr>
+                                <td>Nisha Kumar</td>
+                                <td>Premium Plan</td>
+                                <td>₹1499</td>
+                                <td>2023-06-10</td>
+                                <td><span class="status-badge status-failed">Failed</span></td>
+                                <td><button class="action-btn">Contact Customer</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Load form submissions from server
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch submissions from server
+            fetchSubmissions();
+            
+            // Setup action buttons for Test Data and Clear Data
+            setupAdminButtons();
+        });
+        
+        function fetchSubmissions() {
+            fetch('http://localhost:3000/api/submissions')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(submissions => {
+                    // Update stats based on submissions
+                    updateDashboardStats(submissions);
+                    
+                    // Render submissions in table
+                    renderSubmissionsTable(submissions);
+                    
+                    // Setup filtering functionality
+                    setupFilters(submissions);
+                    
+                    // Setup action buttons
+                    setupActionButtons();
+                })
+                .catch(error => {
+                    console.error('Error fetching submissions:', error);
+                    
+                    // Fallback to localStorage if server is unavailable
+                    const localSubmissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+                    updateDashboardStats(localSubmissions);
+                    renderSubmissionsTable(localSubmissions);
+                    setupFilters(localSubmissions);
+                    setupActionButtons();
+                    
+                    // Show error notification
+                    showNotification('Error connecting to server. Showing locally stored data instead.', 'error');
+                });
+        }
+        
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            `;
+            
+            // Add notification to page
+            document.body.appendChild(notification);
+            
+            // Add close button functionality
+            const closeBtn = notification.querySelector('.close-btn');
+            closeBtn.addEventListener('click', function() {
+                document.body.removeChild(notification);
+            });
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
+            }, 5000);
+        }
+        
+        function updateDashboardStats(submissions) {
+            const totalCustomers = document.querySelector('.stat-card.customers .stat-value');
+            const monthlyRevenue = document.querySelector('.stat-card.revenue .stat-value');
+            const activeSubscriptions = document.querySelector('.stat-card.subscriptions .stat-value');
+            const pendingVerifications = document.querySelector('.stat-card.pending .stat-value');
+            
+            if (submissions.length > 0) {
+                // Update total customers
+                if (totalCustomers) {
+                    totalCustomers.textContent = submissions.length;
+                }
+                
+                // Calculate revenue
+                if (monthlyRevenue) {
+                    let revenue = 0;
+                    submissions.forEach(sub => {
+                        // Extract numeric value from price string (e.g., "₹999" -> 999)
+                        const amount = parseInt(sub.amount.replace(/[^0-9]/g, '')) || 0;
+                        revenue += amount;
+                    });
+                    monthlyRevenue.textContent = `₹${revenue}`;
+                }
+                
+                // Count verified subscriptions
+                if (activeSubscriptions) {
+                    const verified = submissions.filter(sub => sub.status === 'verified').length;
+                    activeSubscriptions.textContent = verified || 0;
+                }
+                
+                // Count pending verifications
+                if (pendingVerifications) {
+                    const pending = submissions.filter(sub => sub.status === 'pending').length;
+                    pendingVerifications.textContent = pending || 0;
+                }
+            }
+        }
+        
+        function renderSubmissionsTable(submissions) {
+            const tableBody = document.querySelector('table tbody');
+            if (!tableBody) return;
+            
+            // Clear existing rows
+            tableBody.innerHTML = '';
+            
+            // Add submissions to table
+            submissions.forEach(submission => {
+                const row = document.createElement('tr');
+                
+                // Create table cell for customer
+                const customerCell = document.createElement('td');
+                customerCell.textContent = submission.customer;
+                row.appendChild(customerCell);
+                
+                // Create table cell for plan
+                const planCell = document.createElement('td');
+                planCell.textContent = submission.plan;
+                row.appendChild(planCell);
+                
+                // Create table cell for amount
+                const amountCell = document.createElement('td');
+                amountCell.textContent = submission.amount;
+                row.appendChild(amountCell);
+                
+                // Create table cell for date
+                const dateCell = document.createElement('td');
+                dateCell.textContent = submission.date;
+                row.appendChild(dateCell);
+                
+                // Create table cell for status
+                const statusCell = document.createElement('td');
+                const statusBadge = document.createElement('span');
+                statusBadge.classList.add('status-badge');
+                
+                if (submission.status === 'verified') {
+                    statusBadge.classList.add('status-verified');
+                    statusBadge.textContent = 'Verified';
+                } else if (submission.status === 'pending') {
+                    statusBadge.classList.add('status-pending');
+                    statusBadge.textContent = 'Pending';
+                } else if (submission.status === 'failed') {
+                    statusBadge.classList.add('status-failed');
+                    statusBadge.textContent = 'Failed';
+                }
+                
+                statusCell.appendChild(statusBadge);
+                row.appendChild(statusCell);
+                
+                // Create table cell for action
+                const actionCell = document.createElement('td');
+                const actionButton = document.createElement('button');
+                actionButton.classList.add('action-btn');
+                
+                if (submission.status === 'pending') {
+                    actionButton.textContent = 'Verify Payment';
+                    actionButton.setAttribute('data-action', 'verify');
+                } else if (submission.status === 'failed') {
+                    actionButton.textContent = 'Contact Customer';
+                    actionButton.setAttribute('data-action', 'contact');
+                } else {
+                    actionButton.textContent = 'View Details';
+                    actionButton.setAttribute('data-action', 'view');
+                }
+                
+                actionButton.setAttribute('data-id', submission.id);
+                actionCell.appendChild(actionButton);
+                row.appendChild(actionCell);
+                
+                // Add row to table
+                tableBody.appendChild(row);
+            });
+            
+            // If no submissions, show a message
+            if (submissions.length === 0) {
+                const emptyRow = document.createElement('tr');
+                const emptyCell = document.createElement('td');
+                emptyCell.colSpan = 6;
+                emptyCell.textContent = 'No submissions yet. When customers fill out the form, their data will appear here.';
+                emptyCell.style.textAlign = 'center';
+                emptyCell.style.padding = '20px';
+                emptyRow.appendChild(emptyCell);
+                tableBody.appendChild(emptyRow);
+            }
+        }
+        
+        function setupFilters(allSubmissions) {
+            const searchInput = document.querySelector('.search-box input');
+            const planFilter = document.querySelector('.filter-select:nth-of-type(1)');
+            const statusFilter = document.querySelector('.filter-select:nth-of-type(2)');
+            
+            if (searchInput && planFilter && statusFilter) {
+                const filterSubmissions = () => {
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const planValue = planFilter.value;
+                    const statusValue = statusFilter.value;
+                    
+                    // Apply filters
+                    let filteredSubmissions = allSubmissions;
+                    
+                    // Apply search filter
+                    if (searchTerm) {
+                        filteredSubmissions = filteredSubmissions.filter(sub => {
+                            return sub.customer.toLowerCase().includes(searchTerm) || 
+                                  (sub.email && sub.email.toLowerCase().includes(searchTerm)) ||
+                                  (sub.businessName && sub.businessName.toLowerCase().includes(searchTerm));
+                        });
+                    }
+                    
+                    // Apply plan filter
+                    if (planValue && planValue !== 'all') {
+                        filteredSubmissions = filteredSubmissions.filter(sub => {
+                            return sub.plan.toLowerCase().includes(planValue.toLowerCase());
+                        });
+                    }
+                    
+                    // Apply status filter
+                    if (statusValue && statusValue !== 'all') {
+                        filteredSubmissions = filteredSubmissions.filter(sub => {
+                            return sub.status === statusValue;
+                        });
+                    }
+                    
+                    // Update table with filtered results
+                    renderSubmissionsTable(filteredSubmissions);
+                    
+                    // Re-setup action buttons for new table rows
+                    setupActionButtons();
+                }
+                
+                // Add event listeners
+                searchInput.addEventListener('input', filterSubmissions);
+                planFilter.addEventListener('change', filterSubmissions);
+                statusFilter.addEventListener('change', filterSubmissions);
+            }
+        }
+        
+        function setupActionButtons() {
+            const actionButtons = document.querySelectorAll('.action-btn');
+            
+            actionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.getAttribute('data-action');
+                    const id = this.getAttribute('data-id');
+                    const row = this.closest('tr');
+                    const customer = row.cells[0].textContent;
+                    
+                    if (action === 'verify') {
+                        // Update status to verified
+                        updateSubmissionStatus(id, 'verified');
+                        
+                        // Update UI
+                        const statusCell = row.cells[4];
+                        statusCell.innerHTML = '<span class="status-badge status-verified">Verified</span>';
+                        
+                        // Change button to "View Details"
+                        this.textContent = 'View Details';
+                        this.setAttribute('data-action', 'view');
+                        
+                        showNotification(`Payment verified for customer "${customer}"`, 'success');
+                    } else if (action === 'contact') {
+                        showNotification(`Contact initiated with customer "${customer}"`, 'info');
+                    } else if (action === 'view') {
+                        // Show customer details
+                        showCustomerDetails(id);
+                    }
+                });
+            });
+        }
+        
+        function updateSubmissionStatus(id, status) {
+            // Update status on server
+            fetch(`http://localhost:3000/api/submissions/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ status })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Status updated:', data);
+                
+                // Update stats
+                fetchSubmissions();
+            })
+            .catch(error => {
+                console.error('Error updating status:', error);
+                showNotification('Error updating status. Please try again.', 'error');
+                
+                // Fallback to localStorage
+                const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+                const submission = submissions.find(sub => sub.id.toString() === id.toString());
+                
+                if (submission) {
+                    submission.status = status;
+                    localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+                }
+            });
+        }
+        
+        function showCustomerDetails(id) {
+            // Fetch customer details from server
+            fetch(`http://localhost:3000/api/submissions/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(submission => {
+                    displayCustomerDetailsModal(submission);
+                })
+                .catch(error => {
+                    console.error('Error fetching customer details:', error);
+                    
+                    // Fallback to localStorage
+                    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+                    const submission = submissions.find(sub => sub.id.toString() === id.toString());
+                    
+                    if (submission) {
+                        displayCustomerDetailsModal(submission);
+                    } else {
+                        showNotification('Customer details not found.', 'error');
+                    }
+                });
+        }
+        
+        function displayCustomerDetailsModal(submission) {
+            // Create modal element
+            const modal = document.createElement('div');
+            modal.className = 'customer-modal';
+            
+            // Create modal content
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Customer Details</h3>
+                        <button class="close-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details-section">
+                            <h4>Personal Information</h4>
+                            <div class="details-row">
+                                <div class="details-label">Name:</div>
+                                <div class="details-value">${submission.customer}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Email:</div>
+                                <div class="details-value">${submission.email || 'N/A'}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Phone:</div>
+                                <div class="details-value">${submission.phone || 'N/A'}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Address:</div>
+                                <div class="details-value">${submission.address || 'N/A'}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="details-section">
+                            <h4>Business Information</h4>
+                            <div class="details-row">
+                                <div class="details-label">Business Name:</div>
+                                <div class="details-value">${submission.businessName || 'N/A'}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Business Type:</div>
+                                <div class="details-value">${submission.businessType || 'N/A'}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="details-section">
+                            <h4>Subscription Details</h4>
+                            <div class="details-row">
+                                <div class="details-label">Plan:</div>
+                                <div class="details-value">${submission.plan}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Amount:</div>
+                                <div class="details-value">${submission.amount}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Status:</div>
+                                <div class="details-value status-${submission.status}">${submission.status.charAt(0).toUpperCase() + submission.status.slice(1)}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Date:</div>
+                                <div class="details-value">${submission.date}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="details-section">
+                            <h4>Payment Details</h4>
+                            <div class="details-row">
+                                <div class="details-label">Transaction ID:</div>
+                                <div class="details-value">${submission.transactionId || 'N/A'}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Transaction Date:</div>
+                                <div class="details-value">${submission.transactionDate || 'N/A'}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Payment Method:</div>
+                                <div class="details-value">${submission.paymentMethod || 'N/A'}</div>
+                            </div>
+                            <div class="details-row">
+                                <div class="details-label">Reference Number:</div>
+                                <div class="details-value">${submission.referenceNumber || 'N/A'}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        ${submission.status === 'pending' ? 
+                          `<button class="action-btn verify-btn" data-id="${submission.id}">Verify Payment</button>` : ''}
+                        <button class="btn secondary-btn close-modal">Close</button>
+                    </div>
+                </div>
+            `;
+            
+            // Add modal to page
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking close button
+            const closeButton = modal.querySelector('.close-btn');
+            closeButton.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+            
+            // Close modal when clicking close button in footer
+            const closeModalButton = modal.querySelector('.close-modal');
+            closeModalButton.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+            
+            // Add verify button functionality
+            const verifyButton = modal.querySelector('.verify-btn');
+            if (verifyButton) {
+                verifyButton.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    updateSubmissionStatus(id, 'verified');
+                    document.body.removeChild(modal);
+                    
+                    // Refresh data
+                    fetchSubmissions();
+                });
+            }
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+        
+        function setupAdminButtons() {
+            // Remove test data button and only show clear button for admin
+            const clearDataButton = document.createElement('button');
+            clearDataButton.textContent = 'Clear All Data';
+            clearDataButton.classList.add('action-btn');
+            clearDataButton.style.marginLeft = '10px';
+            clearDataButton.style.color = 'var(--danger-color)';
+            
+            clearDataButton.addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all submission data? This cannot be undone.')) {
+                    // Clear data on server
+                    fetch('http://localhost:3000/api/submissions/clear', {
+                        method: 'DELETE'
+                    })
+                    .then(response => {
+                        if (!response.ok && response.status !== 204) {
+                            throw new Error('Network response was not ok');
+                        }
+                        
+                        showNotification('All data cleared successfully', 'success');
+                        
+                        // Refresh data
+                        fetchSubmissions();
+                    })
+                    .catch(error => {
+                        console.error('Error clearing data:', error);
+                        showNotification('Error clearing data. Please try again.', 'error');
+                    });
+                }
+            });
+            
+            // Add button to the page
+            const tableHeader = document.querySelector('.table-header');
+            if (tableHeader) {
+                tableHeader.appendChild(clearDataButton);
+            }
+        }
+    </script>
+</body>
+</html> 
