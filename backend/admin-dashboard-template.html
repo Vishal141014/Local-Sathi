@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Sathi - Admin Dashboard</title>
+  <style>
+    /* This is just a mockup - actual styles would be in your React components */
+    :root {
+      --primary: #6c5ce7;
+      --secondary: #00b894;
+      --danger: #d63031;
+      --warning: #fdcb6e;
+      --dark: #2d3436;
+      --light: #f5f6fa;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f6fa;
+    }
+    .admin-wrapper {
+      display: flex;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: var(--dark);
+      color: white;
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+    .logo {
+      padding: 0 20px;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    .nav-item {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .nav-item:hover, .nav-item.active {
+      background-color: rgba(108, 92, 231, 0.1);
+      color: var(--primary);
+    }
+    .nav-item i {
+      margin-right: 10px;
+    }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .stat-card h3 {
+      font-size: 16px;
+      color: var(--dark);
+      margin: 0 0 10px;
+    }
+    .stat-card .number {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+    .stat-card .trend {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .data-table {
+      width: 100%;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .action-btn {
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-weight: 500;
+    }
+    .btn-verify {
+      background-color: var(--secondary);
+      color: white;
+    }
+    .btn-delete {
+      background-color: var(--danger);
+      color: white;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .tab.active {
+      border-bottom: 3px solid var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .admin-profile {
+      display: flex;
+      align-items: center;
+    }
+    .admin-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- This is a mockup for the admin dashboard UI -->
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        Local Sathi Admin
+      </div>
+      <div class="nav-item active">
+        <i>📊</i> Dashboard
+      </div>
+      <div class="nav-item">
+        <i>👥</i> Users
+      </div>
+      <div class="nav-item">
+        <i>💲</i> Subscriptions
+      </div>
+      <div class="nav-item">
+        <i>📬</i> Messages
+      </div>
+      <div class="nav-item">
+        <i>📈</i> Analytics
+      </div>
+      <div class="nav-item">
+        <i>⚙️</i> Settings
+      </div>
+      <div class="nav-item">
+        <i>🔒</i> Logout
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="page-header">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-profile">
+          <div class="admin-avatar">A</div>
+          <div>
+            <div>Admin User</div>
+            <small>Super Admin</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Users</h3>
+          <div class="number">124</div>
+          <div class="trend">
+            <span style="color: var(--secondary)">↑ 12% from last month</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <h3>Monthly Revenue</h3>
+          <div class="number">₹62,400</div>
+          <div class="trend">
+            <span style="color: var(--secondary)">↑ 8% from last month</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <h3>Active Subscriptions</h3>
+          <div class="number">98</div>
+          <div class="trend">
+            <span style="color: var(--secondary)">↑ 5% from last month</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <h3>Pending Verifications</h3>
+          <div class="number">7</div>
+          <div class="trend">
+            <span style="color: var(--danger)">↓ 3% from last month</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pending Verifications Table -->
+      <div class="data-table">
+        <div class="table-header">
+          <h2>Pending Verifications</h2>
+          <button class="action-btn">View All</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Plan</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Payment Reference</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rahul Sharma</td>
+              <td>Premium</td>
+              <td>₹1,499</td>
+              <td>April 25, 2023</td>
+              <td>TXN123456789</td>
+              <td>
+                <button class="action-btn btn-verify">Verify</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Priya Patel</td>
+              <td>Business</td>
+              <td>₹999</td>
+              <td>April 24, 2023</td>
+              <td>TXN987654321</td>
+              <td>
+                <button class="action-btn btn-verify">Verify</button>
+              </td>
+            </tr>
+            <!-- More rows would go here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recent Messages Table -->
+      <div class="data-table">
+        <div class="table-header">
+          <h2>Recent Contact Messages</h2>
+          <button class="action-btn">View All</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Message</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Amit Kumar</td>
+              <td>amit@example.com</td>
+              <td>I have a question about the premium plan...</td>
+              <td>April 26, 2023</td>
+              <td>New</td>
+              <td>
+                <button class="action-btn">Reply</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Sneha Gupta</td>
+              <td>sneha@example.com</td>
+              <td>Can you help me with setting up my account?</td>
+              <td>April 25, 2023</td>
+              <td>New</td>
+              <td>
+                <button class="action-btn">Reply</button>
+              </td>
+            </tr>
+            <!-- More rows would go here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recent Users Table -->
+      <div class="data-table">
+        <div class="table-header">
+          <h2>Recent Users</h2>
+          <button class="action-btn">View All</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Business Name</th>
+              <th>Joined Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vikram Singh</td>
+              <td>vikram@example.com</td>
+              <td>Singh Electronics</td>
+              <td>April 26, 2023</td>
+              <td>
+                <button class="action-btn">View</button>
+                <button class="action-btn btn-delete">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Meera Sharma</td>
+              <td>meera@example.com</td>
+              <td>Sharma Fashion</td>
+              <td>April 25, 2023</td>
+              <td>
+                <button class="action-btn">View</button>
+                <button class="action-btn btn-delete">Delete</button>
+              </td>
+            </tr>
+            <!-- More rows would go here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html> 

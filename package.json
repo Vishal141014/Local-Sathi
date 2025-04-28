@@ -1,0 +1,19 @@
+{
+  "name": "local-sathi",
+  "version": "1.0.0",
+  "description": "Local Sathi AI chatbot platform",
+  "main": "run.js",
+  "scripts": {
+    "start": "node run.js",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start",
+    "dev": "node run.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express-async-handler": "^1.2.0"
+  }
+}
