@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaHome, FaRobot, FaChartLine, FaCreditCard, FaCog, FaSignOutAlt, FaPlus, FaEllipsisH, FaCheck, FaTimes, FaCalendarAlt, FaExclamationTriangle } from 'react-icons/fa';
+import { FaHome, FaRobot, FaChartLine, FaCreditCard, FaCog, FaSignOutAlt, FaPlus, FaEllipsisH, FaCheck, FaTimes, FaCalendarAlt, FaExclamationTriangle, FaExternalLinkAlt } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import api from '../utils/axios';
@@ -521,12 +521,12 @@ const Dashboard = () => {
                         <h4 className="font-medium text-dark">Telegram Support</h4>
                         <p className="text-sm text-gray">
                           <a 
-                            href="https://t.me/UsarFAQ_bot" 
+                            href="https://t.me/LocalSathiBot" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className="text-primary-600 hover:underline"
                           >
-                            @UsarFAQ_bot
+                            @LocalSathiBot
                           </a>
                         </p>
                         <p className="text-xs text-gray mt-1">24/7 Automated + Human Support</p>

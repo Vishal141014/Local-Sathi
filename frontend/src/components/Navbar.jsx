@@ -49,6 +49,7 @@ const Navbar = () => {
     { name: 'Pricing', path: '/pricing' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Try Bot', path: 'https://t.me/LocalSathiBot', external: true },
   ];
 
   const languages = [
@@ -73,17 +74,29 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-6">
               {navLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                    location.pathname === item.path
-                      ? 'text-pink font-semibold border-b-2 border-pink'
-                      : 'text-dark hover:text-pink hover:border-b-2 hover:border-pink'
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-dark hover:text-pink hover:border-b-2 hover:border-pink"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                      location.pathname === item.path
+                        ? 'text-pink font-semibold border-b-2 border-pink'
+                        : 'text-dark hover:text-pink hover:border-b-2 hover:border-pink'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -178,18 +191,31 @@ const Navbar = () => {
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg rounded-b-lg">
             {navLinks.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
-                  location.pathname === item.path
-                    ? 'text-pink font-semibold bg-pink bg-opacity-10'
-                    : 'text-dark hover:text-pink hover:bg-gray-50'
-                }`}
-                onClick={toggleMenu}
-              >
-                {item.name}
-              </Link>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-dark hover:text-pink hover:bg-gray-50"
+                  onClick={toggleMenu}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    location.pathname === item.path
+                      ? 'text-pink font-semibold bg-pink bg-opacity-10'
+                      : 'text-dark hover:text-pink hover:bg-gray-50'
+                  }`}
+                  onClick={toggleMenu}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             
             {userInfo ? (

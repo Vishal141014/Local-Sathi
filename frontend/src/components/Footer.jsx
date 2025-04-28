@@ -20,7 +20,7 @@ const Footer = () => {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900">
               <FaLinkedin size={24} />
             </a>
-            <a href="https://t.me/UsarFAQ_bot" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
+            <a href="https://t.me/LocalSathiBot" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">
               <FaTelegram size={24} />
             </a>
           </div>

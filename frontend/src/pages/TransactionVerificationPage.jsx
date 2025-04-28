@@ -32,8 +32,9 @@ const TransactionVerificationPage = () => {
     setIsSubmitting(true);
     setError(null);
     
-    // Generate a reference number
-    const reference = 'REF-' + Math.floor(100000 + Math.random() * 900000);
+    // Generate a reference number with timestamp to ensure uniqueness
+    const timestamp = new Date().getTime();
+    const reference = 'REF-' + timestamp + '-' + Math.floor(1000 + Math.random() * 9000);
     
     try {
       // Get the user token from local storage

@@ -8,6 +8,23 @@ exports.createSubscription = async (req, res) => {
   try {
     const { plan, price, paymentReference, paymentMethod } = req.body;
 
+    // Ensure we have a payment reference to avoid duplicate key errors
+    if (!paymentReference) {
+      return res.status(400).json({
+        success: false,
+        message: 'Payment reference is required'
+      });
+    }
+
+    // Check if a subscription with this reference already exists
+    const existingSubscription = await Subscription.findOne({ paymentReference });
+    if (existingSubscription) {
+      return res.status(400).json({
+        success: false,
+        message: 'A subscription with this payment reference already exists'
+      });
+    }
+
     // Create subscription
     const subscription = await Subscription.create({
       user: req.user.id,

@@ -16,6 +16,7 @@ import TransactionVerificationPage from './pages/TransactionVerificationPage';
 import SubscriptionConfirmationPage from './pages/SubscriptionConfirmationPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import Demo from './pages/Demo';
 
 // Protected Route Components
 const AdminRoute = ({ children }) => {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/demo" element={<Demo />} />
         
         {/* Protected User Routes */}
         <Route 

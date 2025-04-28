@@ -26,7 +26,8 @@ const SubscriptionSchema = new mongoose.Schema({
   },
   paymentReference: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   paymentMethod: {
     type: String,
@@ -42,6 +43,14 @@ const SubscriptionSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+});
+
+// Before saving, ensure the paymentReference is not null or empty
+SubscriptionSchema.pre('save', function(next) {
+  if (!this.paymentReference || this.paymentReference.trim() === '') {
+    this.paymentReference = 'REF-' + Date.now() + '-' + Math.floor(1000 + Math.random() * 9000);
+  }
+  next();
 });
 
 // Find active subscription for a user

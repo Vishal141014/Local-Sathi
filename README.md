@@ -2,6 +2,15 @@
 
 Local Sathi is an AI-powered customer support platform designed for small businesses in India. It provides chatbot services for WhatsApp, Telegram, and other messaging platforms to help businesses automate customer interactions.
 
+## Demo & Live Examples
+
+### Try Our Demo Bot
+Experience Local Sathi in action with our demo bot on Telegram:
+
+- **Telegram Bot**: [LocalSathiBot](https://t.me/LocalSathiBot)
+
+Simply click the link above to start interacting with our demo bot and see the capabilities of Local Sathi firsthand.
+
 ## Features
 
 - **Instant Reply**: Respond to customer queries 24/7 without delays

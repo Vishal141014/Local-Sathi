@@ -131,7 +131,7 @@ const HomePage = () => {
                   Get Started
                 </Link>
                 <a
-                  href="https://t.me/UsarFAQ_bot"
+                  href="https://t.me/LocalSathiBot"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-white text-primary-600 font-medium rounded-md border border-primary-500 hover:bg-gray-50 transition duration-300 text-center shadow-sm hover:shadow-md flex items-center"
@@ -165,19 +165,19 @@ const HomePage = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="md:w-1/2 mb-8 md:mb-0">
               <span className="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-3">Try Our Demo</span>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Experience Our Coaching Geek USAR Bot</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Experience Our Local Sathi Bot</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Get a hands-on experience with our Telegram coaching center bot. Ask questions, explore features, and see how it can help your business.
+                Get a hands-on experience with our Telegram bot. Ask questions, explore features, and see how it can help your business.
               </p>
               <div className="flex items-center p-4 bg-white rounded-lg shadow-md border border-blue-100">
                 <div className="mr-4 text-blue-500">
                   <SiTelegram className="h-12 w-12" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-gray-900">Coaching Geek USAR</h3>
-                  <p className="text-sm text-gray-600 mb-2">Intelligent AI assistant for your coaching needs</p>
+                  <h3 className="font-medium text-gray-900">Local Sathi Bot</h3>
+                  <p className="text-sm text-gray-600 mb-2">Intelligent AI assistant for your business needs</p>
                   <a 
-                    href="https://t.me/UsarFAQ_bot" 
+                    href="https://t.me/LocalSathiBot" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
@@ -195,19 +195,19 @@ const HomePage = () => {
                       <SiTelegram className="h-8 w-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-gray-900">Coaching Geek USAR</h3>
+                      <h3 className="font-bold text-gray-900">Local Sathi Bot</h3>
                       <p className="text-sm text-gray-500">Online | Telegram Bot</p>
                     </div>
                   </div>
                   <div className="space-y-4">
                     <div className="bg-gray-100 p-3 rounded-lg max-w-xs">
-                      <p className="text-sm">Hello! How can I help you with your coaching needs today?</p>
+                      <p className="text-sm">Hello! How can I help you with your business needs today?</p>
                     </div>
                     <div className="bg-blue-100 p-3 rounded-lg max-w-xs ml-auto">
                       <p className="text-sm">I want to learn more about your services.</p>
                     </div>
                     <div className="bg-gray-100 p-3 rounded-lg max-w-xs">
-                      <p className="text-sm">I'd be happy to tell you about our coaching services! We offer personalized learning plans, expert guidance, and interactive content.</p>
+                      <p className="text-sm">I'd be happy to tell you about our services! We offer personalized learning plans, expert guidance, and interactive content.</p>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-200">
@@ -262,7 +262,7 @@ const HomePage = () => {
               <p className="text-sm font-medium">WhatsApp</p>
             </div>
             <div className="text-center transform transition-transform duration-300 hover:scale-110">
-              <a href="https://t.me/UsarFAQ_bot" target="_blank" rel="noopener noreferrer" className="block">
+              <a href="https://t.me/LocalSathiBot" target="_blank" rel="noopener noreferrer" className="block">
                 <div className="bg-blue-50 p-4 rounded-full inline-flex items-center justify-center w-16 h-16 mb-3 shadow-md">
                   <SiTelegram className="h-8 w-8 text-blue-500" />
                 </div>
