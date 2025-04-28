@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Local Sathi - AI-powered Customer Support
 
 Local Sathi is an AI-powered customer support platform designed for small businesses in India. It provides chatbot services for WhatsApp, Telegram, and other messaging platforms to help businesses automate customer interactions.
@@ -261,3 +262,7 @@ local-sathi/
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+=======
+# Local-Sathi
+Local Sathi is an AI-powered customer support platform designed for small businesses in India. It provides chatbot services for WhatsApp, Telegram, and other messaging platforms to help businesses automate customer interactions.
+>>>>>>> 178bfc34358e2beca9ce915ac251d3cd36340a39
